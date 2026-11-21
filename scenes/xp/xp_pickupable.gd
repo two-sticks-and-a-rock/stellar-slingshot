@@ -4,7 +4,7 @@ extends Area2D
 @export var xp_value : int = 1
 @export var xp_sprite : Texture2D = load("res://art/sprites/xp/xp_drop.svg") as Texture2D
 
-@onready var player = get_parent().get_node("%player") as StaticBody2D
+@onready var player = get_parent().get_node("%player") as CharacterBody2D
 @onready var sprite : Sprite2D = $Sprite2D
 var move_to_player = false
 

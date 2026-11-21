@@ -1,9 +1,13 @@
 extends Line2D
 
-@onready var player = get_parent() as StaticBody2D
+@onready var player = get_parent() as CharacterBody2D
 
 var start_vector := Vector2.ZERO
 var end_vector := Vector2.ZERO
+
+var direction = Vector2.ZERO
+var speed = 0
+var speed_mult = 3
 
 @onready var sprite: Sprite2D = $"../Sprite2D"
 var slingshot_length_clamp = 513
@@ -21,7 +25,14 @@ func _ready():
 	modulate = self_modulate * 4.0
 
 func handle_speed(slingshot_vector: Vector2):
-	pass
+	direction = slingshot_vector.normalized()
+	speed = slingshot_vector.length()
+
+	player.velocity = direction * speed * speed_mult
+
+func decay_speed():
+	player.velocity = direction * speed * speed_mult
+	direction = lerp(direction, Vector2.ZERO, 0.01)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("click"):
@@ -74,9 +85,9 @@ func _input(_event: InputEvent) -> void:
 		#use_wasd = false
 		
 func _physics_process(_delta: float) -> void:
+	decay_speed()
 	#if use_wasd == false: 
 		#sprite.look_at(-1*get_global_mouse_position())
-		pass
 		
 	#if use_wasd == true: 
 		#sprite.rotate(rotate_wasd_direction * rotate_wasd_speed * _delta)

@@ -1,5 +1,5 @@
 class_name Player
-extends StaticBody2D
+extends CharacterBody2D
 
 @export var orbiter_ring_scene : PackedScene
 @export var frost_nova_scene : PackedScene
@@ -99,3 +99,4 @@ func _physics_process(_delta):
 	hp_bar.value = curr_hp
 	if (curr_hp <= 0):
 		handle_game_over.call_deferred()
+	move_and_slide()

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player = get_parent().get_node("%player") as StaticBody2D
+@onready var player = get_parent().get_node("%player") as CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sparks: GPUParticles2D = $sparks
 

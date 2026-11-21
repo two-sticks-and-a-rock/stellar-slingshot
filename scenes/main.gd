@@ -2,7 +2,7 @@ extends Node2D
 
 var click_and_drag_tutorial_scene : PackedScene = load("res://scenes/ui/tutorial/click_and_drag.tscn")
 var upgrade_menu_scene : PackedScene = load("res://scenes/ui/upgrade_menu.tscn")
-@onready var player: StaticBody2D = $player
+@onready var player: CharacterBody2D = $player
 
 func _on_start_tutorial():
 	var tutorial = click_and_drag_tutorial_scene.instantiate()

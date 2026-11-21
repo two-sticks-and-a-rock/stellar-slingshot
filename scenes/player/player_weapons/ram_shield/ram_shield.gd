@@ -3,7 +3,7 @@ extends PlayerWeapon
 STELLAR SHOCKWAVE
 """
 
-@onready var player : StaticBody2D = get_parent() as StaticBody2D
+@onready var player : CharacterBody2D = get_parent() as CharacterBody2D
 
 @onready var ram_cap : PlayerBullet = $RamCap
 @onready var power_up : TextureProgressBar = $RamCap/AnimatedSprite2D/TextureProgressBar
