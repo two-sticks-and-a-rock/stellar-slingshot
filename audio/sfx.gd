@@ -82,7 +82,5 @@ func play(sound_name: String):
 # Called by the slingshot script when the player lets go of the mouse
 func thrust_start():
 	# need to work on testing different sounds for different player speed 
-	if Mover.speed < 10.0:
-		return
 	_players["thruster_small"].pitch_scale = randf_range(0.8, 1.1)
 	play("thruster_small")

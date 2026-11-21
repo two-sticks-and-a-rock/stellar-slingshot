@@ -99,5 +99,3 @@ func _physics_process(_delta):
 	hp_bar.value = curr_hp
 	if (curr_hp <= 0):
 		handle_game_over.call_deferred()
-
-	constant_linear_velocity = Mover.get_movement()

@@ -127,7 +127,6 @@ func _physics_process(_delta):
 	else:
 		shove_velocity = Vector2.ZERO
 
-	velocity -= Mover.get_movement()
 	move_and_slide()
 
 func shove_enemy(new_velocity: Vector2):
