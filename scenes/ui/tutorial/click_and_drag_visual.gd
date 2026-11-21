@@ -22,6 +22,7 @@ var max_animations_to_show : int = 5
 var num_animations_shown : int = 0
 func _ready():
 	drag_line.add_point(drag_line_start_point)
+var slingshot_length_clamp = 513
 
 func handle_removing_tutorial(delta: float) -> void:
 	if (num_animations_shown >= max_animations_to_show):
@@ -36,8 +37,9 @@ func handle_removing_tutorial(delta: float) -> void:
 		click_length = 0
 		return
 	
-	if (abs(Mover.get_movement().length()) >= Mover.slingshot_length_clamp):
-		should_show_tutorial = false
+	# TODO: this check needs to be based on something else. Leave commented out for now
+	# if (abs(Mover.get_movement().length()) >= slingshot_length_clamp):
+		# should_show_tutorial = false
 	
 func _physics_process(delta: float):
 	handle_removing_tutorial(delta)

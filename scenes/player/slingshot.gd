@@ -6,7 +6,7 @@ var start_vector := Vector2.ZERO
 var end_vector := Vector2.ZERO
 
 @onready var sprite: Sprite2D = $"../Sprite2D"
-
+var slingshot_length_clamp = 513
 signal engine_burn
 
 # for WASD controls
@@ -21,8 +21,7 @@ func _ready():
 	modulate = self_modulate * 4.0
 
 func handle_speed(slingshot_vector: Vector2):
-		Mover.direction = slingshot_vector.normalized()
-		Mover.speed = slingshot_vector.length()
+	pass
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("click"):
@@ -35,14 +34,14 @@ func _input(_event: InputEvent) -> void:
 
 		var visible_direction = (start_vector - end_vector).normalized()*80
 		var visible_start_vector = to_local(player.global_position + visible_direction)  
-		var visible_end_vector = to_local(player.global_position + (start_vector - end_vector).limit_length(Mover.slingshot_length_clamp) + visible_direction) 
+		var visible_end_vector = to_local(player.global_position + (start_vector - end_vector).limit_length(slingshot_length_clamp) + visible_direction) 
 		add_point(visible_start_vector, 0)
 		add_point(visible_end_vector, 1)
 
 	if Input.is_action_just_released("click"):
 		emit_signal("engine_burn")
 		clear_points()
-		var slingshot_vector = (start_vector - end_vector).limit_length(Mover.slingshot_length_clamp)
+		var slingshot_vector = (start_vector - end_vector).limit_length(slingshot_length_clamp)
 		handle_speed(slingshot_vector)
 		Sfx.thrust_start()	
 		
@@ -65,8 +64,6 @@ func _input(_event: InputEvent) -> void:
 		#
 	#if _event.is_action_pressed("sling_release"): 
 		#var tempVector2 = Vector2(1, 0).rotated(sprite.rotation)
-		#Mover.direction = tempVector2 
-		#Mover.speed = sling_charge 
 		#Sfx.thrust_start()
 		##sling_charge = 0
 		#sling_is_charging = 0

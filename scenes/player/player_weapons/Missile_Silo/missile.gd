@@ -66,7 +66,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			# launch with no target
 			global_position += global_transform.x * speed * delta
-		global_position -= Mover.get_movement()*delta
 
 func _on_missile_entered(body: Node2D) -> void:
 	if (body.is_in_group("enemy")):

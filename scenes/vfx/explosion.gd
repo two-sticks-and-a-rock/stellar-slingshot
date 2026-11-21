@@ -27,6 +27,3 @@ func _process(delta: float) -> void:
 	# I think it's stopping the child emitters as well, but haven't confirmed.
 	if not main_multi_spheres.emitting: #.finished()?
 		queue_free()
-
-func _physics_process(delta) -> void:
-	position -= Mover.get_movement() * delta

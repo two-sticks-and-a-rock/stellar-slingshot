@@ -16,7 +16,6 @@ func _ready() -> void:
 	sprite.texture = xp_sprite
 
 func _physics_process(delta) -> void:
-	position -= Mover.get_movement() * delta
 	if (move_to_player):
 		position = lerp(position, player.global_position, 0.01)
 
