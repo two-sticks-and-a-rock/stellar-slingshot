@@ -25,8 +25,6 @@ func add_new_weapon(weapon: PlayerWeapon):
 	add_child(weapon)
 
 	if (weapon.sprite != null):
-		print("HAS WEAPON SPRITE: " + str(weapon.sprite))
-		print(sprite.get_path_to(weapon.sprite))
 		var remote_transform = RemoteTransform2D.new()
 		remote_transform.rotate(PI/2) # most of our sprites face up so they needs to be offset
 		remote_transform.update_rotation = true
@@ -94,8 +92,8 @@ func handle_game_over():
 	))
 
 func _physics_process(_delta):
-	sprite.look_at(-1*get_global_mouse_position())
-		
+	sprite.rotate(sprite.get_angle_to(get_global_mouse_position())+PI)
+
 	hp_bar.value = curr_hp
 	if (curr_hp <= 0):
 		handle_game_over.call_deferred()

@@ -14,14 +14,20 @@ script = ExtResource("1_tefeu")
 enemy_scene = ExtResource("2_tbgi4")
 enemy_frequency = 0.5
 
-[node name="SpaceBackground" parent="." unique_id=1169845469 instance=ExtResource("3_tbgi4")]
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1460900442]
+limit_begin = Vector2(0, 0)
+limit_end = Vector2(1920, 1080)
+
+[node name="SpaceBackground" parent="Parallax2D" unique_id=1169845469 node_paths=PackedStringArray("player") instance=ExtResource("3_tbgi4")]
 offset_left = -1920.0
 offset_top = -1080.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+player = NodePath("../../player")
 
 [node name="player" parent="." unique_id=2109895852 instance=ExtResource("3_jyhfs")]
 unique_name_in_owner = true
+motion_mode = 1
 
 [node name="StartingWeapon" parent="." unique_id=1651193659 instance=ExtResource("6_tefeu")]
 visible = false
